@@ -13,6 +13,7 @@ const photos = [4, 3, 8, 2, 5, 6, 7, 9, 1];
 const maps =
   "https://www.google.com/maps/place/Castilla+Gourmet+Eventos/@4.6373098,-74.1445317,891m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e3f9d9f733179b1:0x9a4d3dadcc96ca9!8m2!3d4.6373045!4d-74.1419568!16s%2Fg%2F11h4y5hm2d?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D";
 const song = "https://www.youtube.com/watch?v=3PuMsRrjvRc";
+const rsvp = "https://wa.me/573125454520?text=" + encodeURIComponent("¡Hola! Quiero confirmar mi asistencia a los quince años de María Paula el 17 de octubre de 2026. Mi nombre es: ");
 function Flourish() {
   return (
     <div className="flourish" aria-hidden="true">
@@ -85,7 +86,7 @@ export default function Invitation() {
   async function copyAddress() {
     try {
       await navigator.clipboard.writeText(
-        "Castilla Gourmet, Cra. 78 # 7D-30, Bogotá",
+        "Castilla Gourmet, tercer piso, Cra. 78 # 7D-30, Bogotá",
       );
       setCopied(true);
       setCopyError(false);
@@ -101,11 +102,12 @@ export default function Invitation() {
       "BEGIN:VEVENT",
       "UID:maria-paula-xv-20261017@invitacion.local",
       "DTSTAMP:20260920T000000Z",
-      "DTSTART;VALUE=DATE:20261017",
-      "DTEND;VALUE=DATE:20261018",
+      "DTSTART:20261018T010000Z",
       "SUMMARY:Quince años de María Paula",
-      "LOCATION:Castilla Gourmet\\, Cra. 78 # 7D-30\\, Bogotá",
-      "DESCRIPTION:Celebración de quince años. Horario por confirmar. Vestuario elegante. Azul y negro reservados para la quinceañera. Lluvia de sobres.",
+      "LOCATION:Castilla Gourmet\\, tercer piso\\, Cra. 78 # 7D-30\\, Bogotá",
+      "DESCRIPTION:Inicio: 8:00 p.m. (Bogotá). Parqueadero frente al lugar.",
+      " Vestuario elegante. Azul y negro reservados para la quinceañera.",
+      " Lluvia de sobres. Confirmar al +57 3125454520 hasta el 10 de octubre.",
       "END:VEVENT",
       "END:VCALENDAR",
     ].join("\r\n");
@@ -262,15 +264,20 @@ export default function Invitation() {
               <span className="detail-label">CUÁNDO</span>
               <div>
                 <h3>Sábado, 17 de octubre</h3>
-                <p>2026 · Horario por confirmar</p>
+                <p>2026 · 8:00 p.m.</p>
               </div>
             </div>
             <div className="event-row">
               <span className="detail-label">DÓNDE</span>
               <div>
                 <h3>Castilla Gourmet</h3>
+                <p>Tercer piso</p>
                 <p>Cra. 78 # 7D-30 · Bogotá</p>
               </div>
+            </div>
+            <div className="event-row">
+              <span className="detail-label">AL LLEGAR</span>
+              <div><h3>Parqueadero</h3><p>Hay parqueadero frente al lugar.</p></div>
             </div>
             <div className="event-actions">
               <a
@@ -388,17 +395,19 @@ export default function Invitation() {
               <br />
               Me encantaría que fueras parte de este.
             </p>
-            <button
+            <a
               className="button light"
-              disabled
-              aria-describedby="rsvp-pending"
+              href={rsvp}
+              target="_blank"
+              rel="noreferrer"
+              aria-describedby="rsvp-deadline"
             >
               Confirmar asistencia <span aria-hidden="true">↗</span>
-            </button>
-            <p id="rsvp-pending" className="small-note">
-              Pronto estará disponible la confirmación por WhatsApp.
+            </a>
+            <p id="rsvp-deadline" className="small-note">
+              Confirma por WhatsApp hasta el 10 de octubre de 2026.
               <br />
-              La fecha límite de respuesta está por confirmar.
+              +57 312 545 4520 · Envía tu nombre para confirmar.
             </p>
             <div className="signature">
               Con cariño,<strong>María Paula</strong>

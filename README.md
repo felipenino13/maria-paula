@@ -15,18 +15,19 @@ Este documento reúne el contexto inicial recibido el **20 de septiembre de 2026
 | Cumpleañera | María Paula |
 | Celebración | Quince años |
 | Fecha | 17 de octubre de 2026 |
-| Lugar | Castilla Gourmet |
+| Lugar | Castilla Gourmet, Tercer piso |
 | Dirección | [Cra. 78 # 7D-30](https://www.google.com/maps/place/Castilla+Gourmet+Eventos/@4.6373098,-74.1445317,891m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e3f9d9f733179b1:0x9a4d3dadcc96ca9!8m2!3d4.6373045!4d-74.1419568!16s%2Fg%2F11h4y5hm2d?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D) |
 | Ciudad | Bogotá |
-| Hora de llegada e inicio | Pendiente de confirmar |
+| Parqueadero | Frente del lugar ahí parqueadero |
+| Hora de llegada e inicio | 8:00 p.m. |
 | Código de vestuario | Elegante |
 | Colores reservados | Azul y negro para la quinceañera |
 | Regalos | Lluvia de sobres |
 | Preferencia de color para el diseño | Azul noche |
 | Motivos visuales | La luna y flores |
 | Canción elegida | [«Vals de amor», de Joan Sebastian](https://www.youtube.com/watch?v=3PuMsRrjvRc) |
-| Confirmar asistencia | Whatsapp numero +57 Pendiente |
-| Fecha limite para confirmar asistencia | Dato pendiente |
+| Confirmar asistencia | Whatsapp numero +57 3125454520 |
+| Fecha limite para confirmar asistencia | 10 de octubre de 2026 |
 
 No se han proporcionado horario ni datos de confirmación de asistencia.
 
@@ -62,7 +63,7 @@ La primera versión utiliza las nueve fotografías como recuerdos de infancia en
 
 **Estado técnico:** primera versión local implementada con vinext 1.0.0-beta.10, React 19, Vite 8 y TypeScript. Ver versiones exactas en `package-lock.json`. Configuración basada en la [documentación oficial de vinext](https://github.com/cloudflare/vinext).
 
-**Alcance actual:** invitación navegable y adaptable a móvil, tableta y escritorio. No se ha publicado. Los textos emotivos son propuestas editoriales para aprobación; los datos del evento provienen de este documento.
+**Alcance actual:** invitación navegable y adaptable a móvil, tableta y escritorio. Configurada para el dominio de Vercel `https://maria-paula-gamma.vercel.app`; los cambios locales requieren un nuevo despliegue. Los textos emotivos son propuestas editoriales para aprobación; los datos del evento provienen de este documento.
 
 ## Primera versión de la tarjeta
 
@@ -154,19 +155,16 @@ La siguiente estructura es una propuesta inicial, pendiente de validar:
 6. **Confirmación de asistencia:** canal, fecha límite y condiciones por definir.
 7. **Elementos opcionales:** galería, música, cuenta regresiva o agenda, únicamente si se solicitan.
 
-## Preguntas para la persona responsable del evento
+## Datos pendientes resueltos
 
-### Información necesaria para completar la invitación
+- Inicio: 17 de octubre de 2026 a las 8:00 p.m.
+- Acceso: Castilla Gourmet, tercer piso.
+- Parqueadero: frente al lugar; no se ha indicado que sea gratuito ni reservado.
+- Confirmaci�n: WhatsApp +57 3125454520, hasta el 10 de octubre de 2026.
 
-1. ¿A qué hora deben llegar los invitados y a qué hora empieza la celebración? ¿Se debe indicar una hora de finalización?
-2. La confirmación será por WhatsApp: ¿cuál es el número completo con indicativo, quién recibirá las respuestas y cuál es la fecha límite? ¿Puede incluirse ese número en el enlace de la tarjeta?
-3. ¿La invitación será general o personalizada por invitado o familia? ¿Debe indicar nombres, número de cupos o condiciones para acompañantes y niños?
+## Vista previa al compartir
 
-### Logística y entrega
-
-4. ¿Hay información útil de parqueadero, acceso al lugar, accesibilidad o recomendaciones de llegada que debamos incluir?
-5. ¿Aprueban los textos emotivos propuestos y el collage de las nueve fotos de infancia? ¿Desean incluir también una fotografía actual para la portada?
-6. ¿Quién aprueba la versión final, para qué fecha debe estar lista y dónde se publicará?
+Open Graph y Twitter Card est�n configurados en `app/layout.tsx` para el dominio `https://maria-paula-gamma.vercel.app`. Se utiliza la imagen exacta suministrada por el usuario, conservada en `public/images/maria-paula-opengraph.png` (1893 � 898). Los metadatos se incluyen en el HTML est�tico, sin depender de JavaScript. Si cambia el dominio, actualizar las URL absolutas de esos metadatos.
 
 ## Criterios para continuar
 

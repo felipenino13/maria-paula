@@ -28,11 +28,18 @@ for (const viewport of [
   await page.evaluate(() => document.fonts.ready);
   assert.equal(await page.locator("h1").innerText(), "María Paula");
   assert.equal(await page.locator(".photo").count(), 9);
-  assert.ok(
-    await page
-      .getByRole("button", { name: "Confirmar asistencia" })
-      .isDisabled(),
-  );
+  const rsvp = new URL(await page.getByRole("link", { name: "Confirmar asistencia" }).getAttribute("href"));
+  assert.equal(rsvp.hostname, "wa.me");
+  assert.equal(rsvp.pathname, "/573125454520");
+  assert.match(rsvp.searchParams.get("text"), /Mi nombre es/);
+  assert.match(await page.locator("#celebracion").innerText(), /8:00 p.m./);
+  assert.match(await page.locator("#celebracion").innerText(), /Tercer piso/);
+  assert.match(await page.locator("#celebracion").innerText(), /parqueadero frente al lugar/);
+  assert.match(await page.locator("#asistencia").innerText(), /10 de octubre de 2026/);
+  assert.doesNotMatch(await page.locator("main").innerText(), /por confirmar|Pronto estar�/);
+  const ogImage = await page.locator('meta[property="og:image"]').getAttribute("content");
+  assert.equal(ogImage, "https://maria-paula-gamma.vercel.app/images/maria-paula-opengraph.png");
+  assert.equal(await page.evaluate(async (path) => (await fetch(path)).status, new URL(ogImage).pathname), 200);
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -56,7 +63,7 @@ for (const viewport of [
   await page.getByRole("button", { name: "Guardar la fecha" }).click();
   const download = await downloadPromise;
   const ics = await readFile(await download.path(), "utf8");
-  assert.match(ics, /DTSTART;VALUE=DATE:20261017/);
+  assert.match(ics, /DTSTART:20261018T010000Z/);
   await page.getByRole("button", { name: "Copiar dirección" }).click();
   assert.match(
     await page.evaluate(() => navigator.clipboard.readText()),
@@ -80,3 +87,4 @@ for (const viewport of [
 await browser.close();
 assert.deepEqual(errors, []);
 console.log("Sin errores de página ni respuestas HTTP fallidas.");
+
