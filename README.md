@@ -118,7 +118,19 @@ Para usar `start`, detener primero el servidor de desarrollo si ocupa el mismo p
 | `scripts/prepare-photos.py` | Regenerar WebP desde los originales; requiere Python y Pillow |
 | `scripts/verify.mjs` | Comprobación funcional y capturas con Playwright y Edge local |
 
-### Verificación
+### Publicación en Vercel
+
+La invitación se exporta como sitio estático mediante `output: "export"` en `next.config.mjs`. Se conserva vinext; no necesita un servidor Node en el alojamiento. `vercel.json` define:
+
+- Framework Preset: **Other** (`framework: null`).
+- Build Command: **`npm run build`**.
+- Output Directory: **`dist/client`**.
+
+Subir ambos archivos de configuración al repositorio y desplegar la nueva versión. Si se configura manualmente en Vercel, usar los mismos valores y la raíz que contiene `package.json`. No usar el preset Next.js ni publicar `dist` completo. No se requiere la clave de generación de imágenes: los fondos ya están guardados en `public/images/`.
+
+La compilación debe mostrar la ruta `/` como `Static` y generar `dist/client/index.html`. Para probar exactamente esa salida sin servidor vinext: `python -m http.server 3002 --bind 127.0.0.1 --directory dist/client`.
+
+### Verificación de la interfaz
 
 Ejecutar con el servidor encendido:
 
